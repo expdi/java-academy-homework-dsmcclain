@@ -13,7 +13,7 @@ import java.util.Set;
 public class AdopterService {
     public AdopterRepository repository;
 
-    private AnimalService animalService;
+    private final AnimalService animalService;
     @Autowired
     public AdopterService(AdopterRepository repository, AnimalService animalService) {
       this.repository = repository;
@@ -51,6 +51,16 @@ public class AdopterService {
         return adopter;
       } else {
         throw new RuntimeException("failed to update animal");
+      }
+    }
+
+    public boolean update(Adopter adopter) {
+      Adopter oldAdopter = repository.findById(adopter.getId()).orElse(null);
+      if(oldAdopter != null) {
+        repository.save(adopter);
+        return true;
+      } else {
+        return false;
       }
     }
 

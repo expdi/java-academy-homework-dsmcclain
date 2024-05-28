@@ -51,4 +51,15 @@ public class AdopterController {
       return  ResponseEntity.ok(a);
     }
   }
+
+  @DeleteMapping("/{id}")
+  public ResponseEntity<?> delete(@PathVariable("id") int id) {
+    Adopter a = adopterService.find(id);
+    if(a == null) {
+      return ResponseEntity.notFound().build();
+    } else {
+      adopterService.delete(a);
+      return ResponseEntity.noContent().build();
+    }
+  }
 }

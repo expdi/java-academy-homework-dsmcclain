@@ -34,6 +34,18 @@ public class AnimalService {
     } else {
       return false;
     }
+  }
 
+  public boolean delete(int id) {
+    Animal animal = repository.findById(id).orElse(null);
+    if(animal != null)
+      return delete(animal);
+    else
+      return false;
+  }
+
+  public boolean delete(Animal animal) {
+    repository.delete(animal);
+    return true;
   }
 }

@@ -64,6 +64,19 @@ public class AdopterService {
       }
     }
 
+    public boolean delete(int id) {
+      Adopter adopter = repository.findById(id).orElse(null);
+      if(adopter != null)
+        return delete(adopter);
+      else
+        return false;
+    }
+
+    public boolean delete(Adopter adopter) {
+      repository.delete(adopter);
+      return true;
+    }
+
     public List<Adopter> findAll() {
       return repository.findAdoptersWithAdoptions();
     }

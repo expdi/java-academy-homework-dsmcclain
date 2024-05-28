@@ -48,6 +48,10 @@ public class Adopter {
     this.animals = new HashSet<>(animals);
   }
 
+  public void addAnimal(Animal animal) {
+    animals.add(animal);
+  }
+
   @Override
   public String toString() {
     return STR."Adopter{id=\{id}, name='\{name}\{'\''}, phoneNumber=\{phoneNumber}, adoptions=\{animals}\{'}'}";

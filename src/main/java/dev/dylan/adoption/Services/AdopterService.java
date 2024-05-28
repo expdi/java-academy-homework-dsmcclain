@@ -43,15 +43,9 @@ public class AdopterService {
 
     public Adopter adopt(Adopter adopter, Animal animal) {
       animal.setAdopter(adopter);
-      if(animalService.update(animal)) {
-        Set<Animal> animals = adopter.getAnimals();
-        animals.add(animal);
-        adopter.setAnimals(animals);
-        adopter = repository.save(adopter);
-        return adopter;
-      } else {
-        throw new RuntimeException("failed to update animal");
-      }
+      adopter.addAnimal(animal);
+
+      return adopter;
     }
 
     public boolean update(Adopter adopter) {

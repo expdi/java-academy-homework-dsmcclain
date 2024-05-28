@@ -1,0 +1,19 @@
+DROP TABLE if exists Adopter CASCADE;
+DROP TABLE if EXISTS Animal CASCADE;
+
+CREATE TABLE Adopter
+(
+	id serial primary key NOT NULL,
+    NAME VARCHAR(255) NOT NULL,
+    PHONE_NUMBER INTEGER
+);
+
+CREATE TABLE Animal
+(
+    id serial primary key NOT NULL,
+    NAME VARCHAR(255) NOT NULL,
+    TYPE VARCHAR(255),
+    BREED VARCHAR(255),
+    ADOPTER_ID INTEGER,
+    CONSTRAINT FK_ADOPTER FOREIGN KEY(ADOPTER_ID) references Adopter(id)
+);

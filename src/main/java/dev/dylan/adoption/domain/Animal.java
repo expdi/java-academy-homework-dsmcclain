@@ -10,6 +10,7 @@ import org.apache.commons.lang3.Validate;
 @Entity
 public class Animal {
     @Id
+    @GeneratedValue
     private Integer id;
     private String name;
 
